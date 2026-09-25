@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="RESCENE studies visually mediated vision-language-action alignment through latent scene editing of camera-history features." />
+    <meta name="theme-color" content="#263788" />
+    <title>RESCENE — Visually Mediated VLA Alignment</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="site.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#abstract">Skip to content</a>
+    <header class="site-header"><div class="shell nav-wrap">
+      <a class="brand" href="#top" aria-label="RESCENE home"><span class="brand-symbol" aria-hidden="true"><i></i><i></i><i></i></span><span>RESCENE</span></a>
+      <nav aria-label="Page sections"><a href="#abstract">Abstract</a><a href="#idea">Idea</a><a href="#method">Method</a><a href="#evaluation">Evaluation</a><a href="#scope">Scope</a><a href="#citation">Citation</a></nav>
+      <span class="venue">ICLR 2027 · ANONYMOUS</span>
+    </div></header>
+    <main id="top">
+      <section class="hero" aria-labelledby="page-title"><div class="shell hero-copy">
+        <p class="kicker">Anonymous ICLR 2027 submission</p>
+        <h1 id="page-title">RESCENE<span>Visually Mediated VLA Alignment <br />through Latent Scene Editing</span></h1>
+        <p class="hero-summary">A language-defined scene change should be represented visually before it changes a driving model's language and action.</p>
+      </div></section>
+
+      <section id="abstract" class="section abstract-section" aria-labelledby="abstract-title"><div class="shell two-column">
+        <div class="section-heading"><p class="kicker">01 · Overview</p><h2 id="abstract-title">Abstract</h2></div>
+        <div class="abstract-copy">
+          <p>A vision-language-action driving model may produce a plausible response to a hypothetical scene without actually representing the described visual change. A correct action alone therefore does not establish visual grounding.</p>
+          <p><strong>RESCENE</strong> studies alignment through condition-exclusive visual mediation. A latent scene editor masks affected camera-history evidence and predicts DINO features for the edited camera-time-patch support. A fresh response pass receives the assembled features, task, and navigation inputs—but not the edit condition or editor state—and generates language followed by route and trajectory.</p>
+          <p>Factual feature reconstruction, frozen semantic supervision, and an inverse feature cycle constrain the constructed representation without assuming paired counterfactual images. The manuscript specifies matched direct-conditioning comparisons, an independent feature reader, and same-world language–action tests; quantitative evaluation remains incomplete in the supplied draft.</p>
+        </div>
+      </div></section>
+
+      <section id="idea" class="section figure-section" aria-labelledby="idea-title"><div class="shell">
+        <div class="section-heading wide"><p class="kicker">02 · Core idea</p><h2 id="idea-title">Change the visual state,<br />then ask for a response.</h2><p>The edited-scene condition is confined to the editor. The response receives constructed visual features in a separate pass.</p></div>
+        <a class="figure-panel" href="assets/figure-1.png" target="_blank" rel="noopener" data-figure-link aria-describedby="figure-1-caption"><img src="assets/figure-1.png" width="1570" height="875" loading="eager" decoding="async" alt="RESCENE manuscript diagram showing observed and edited visual paths, the latent scene editor, training constraints, and a shared language-action response" /></a>
+        <div class="media-description" id="figure-1-caption"><b class="caption-label">Figure 1 · Two visual paths.</b><p>Observed features support ordinary driving. The edited path constructs features from masked history using a condition supplied only to the editor. The diagram is an information-flow proposal, not evidence that grounding has been achieved. <a href="assets/figure-1.png" target="_blank" rel="noopener">View full size ↗</a></p></div>
+        <div class="info-grid" aria-label="RESCENE information flow">
+          <article class="info-card"><span>01 · Observe</span><h3>Observed feature path</h3><p>Frozen DINO features from camera history remain available for ordinary driving responses.</p></article>
+          <article class="info-card"><span>02 · Construct</span><h3>Latent scene editor</h3><p>Masked history, ego motion, and annotation-derived hints condition feature prediction on affected support.</p></article>
+          <article class="info-card"><span>03 · Respond</span><h3>Fresh response pass</h3><p>The response reads assembled features with task and navigation inputs, not the editor's condition or state.</p></article>
+        </div>
+      </div></section>
+
+      <section id="method" class="section method-section" aria-labelledby="method-title"><div class="shell">
+        <div class="section-heading wide"><p class="kicker">03 · Method</p><h2 id="method-title">Three training views,<br />one shared response.</h2><p>Observed, factual-reconstruction, and edited views share response weights but use independent passes and supervision.</p></div>
+        <a class="figure-panel" href="assets/figure-2.png" target="_blank" rel="noopener" data-figure-link aria-describedby="figure-2-caption"><img src="assets/figure-2.png" width="1410" height="425" loading="eager" decoding="async" alt="RESCENE manuscript schematic of the observed, factual reconstruction, and edited response training views" /></a>
+        <div class="media-description" id="figure-2-caption"><b class="caption-label">Figure 2 · Joint training views.</b><p>The observed view uses real features; the factual and edited views use detached constructed features. Editor losses still train the shared weights. <a href="assets/figure-2.png" target="_blank" rel="noopener">View full size ↗</a></p></div>
+        <div class="detail-list">
+          <article><h3>What is edited?</h3><p>Camera-indexed DINO features on selected time-and-patch support—not a generated RGB image. The scene condition uses language plus actor-box and map hints in offline training and evaluation.</p></article>
+          <article><h3>What is held separate?</h3><p>The response pass does not receive condition tokens, editor hidden states, or editor attention cache. Stop-gradient blocks direct response-loss updates to constructed features.</p></article>
+        </div>
+      </div></section>
+
+      <section id="evaluation" class="section figure-section" aria-labelledby="evaluation-title"><div class="shell">
+        <div class="section-heading wide"><p class="kicker">04 · Evaluation design</p><h2 id="evaluation-title">Test the represented world,<br />not just the final action.</h2><p>The manuscript separates visual-feature meaning from generated language, generated action, and direct language–action shortcuts.</p></div>
+        <div class="info-grid">
+          <article class="info-card"><span>V–L</span><h3>Visual to language</h3><p>Does the generated description match supported attributes of the same edited world?</p></article>
+          <article class="info-card"><span>V–A</span><h3>Visual to action</h3><p>With task and navigation fixed, does the generated waypoint response change appropriately—or remain invariant?</p></article>
+          <article class="info-card"><span>L–A</span><h3>Language to action</h3><p>With the visual world fixed, does the model follow the correct instruction rather than a shuffled one?</p></article>
+        </div>
+        <aside class="status-note"><b>Not yet a measured result</b><div><p>The supplied manuscript leaves edited-feature semantics, generated V–L–A comparison, retention, population, and ablation values pending. This page presents the evaluation design only and reports no success rates or qualitative outcome examples.</p></div></aside>
+      </div></section>
+
+      <section id="scope" class="section" aria-labelledby="scope-title"><div class="shell"><div class="section-heading wide"><p class="kicker">05 · Interpretation</p><h2 id="scope-title">The boundary of the claim.</h2><p>The method's information flow is testable, but the architecture alone cannot establish visual grounding.</p></div><div class="detail-list"><article><h3>No paired counterfactual image</h3><p>Reconstruction, a frozen training reader, and an inverse feature cycle constrain representations; none proves a unique or physically complete edited scene.</p></article><article><h3>No language-only deployment claim</h3><p>The edited path uses annotation-derived spatial hints for training and offline evaluation. Ordinary driving uses observed features directly.</p></article></div></div></section>
+
+      <section id="citation" class="section citation-section" aria-labelledby="citation-title"><div class="shell two-column"><div class="section-heading"><p class="kicker">06 · Citation</p><h2 id="citation-title">Anonymous submission</h2><p>Author and affiliation information is intentionally omitted during double-blind review.</p></div><pre><code>@misc{anonymous_rescene_2027,
+  title  = {RESCENE: Visually Mediated VLA Alignment through Latent Scene Editing},
+  author = {Anonymous},
+  note   = {Under review at ICLR 2027}
+}</code></pre></div></section>
+    </main>
+    <footer><div class="shell footer-inner"><span>RESCENE · Anonymous project page</span><span>ICLR 2027 submission · Preliminary version</span></div></footer>
+    <dialog class="figure-dialog" aria-label="Expanded research figure"><div class="figure-dialog-toolbar"><span>Research figure</span><a data-figure-original target="_blank" rel="noopener">Open original ↗</a><button type="button" data-figure-close autofocus>Close ×</button></div><div class="figure-dialog-stage" role="region" aria-label="Scrollable research figure" tabindex="0"><p class="figure-pan-hint">Swipe to inspect the figure</p><img data-figure-expanded alt="" /></div></dialog>
+    <script src="script.js"></script>
+  </body>
+</html>
