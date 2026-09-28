@@ -131,14 +131,10 @@ tbody th { color: var(--ink); font-weight: 600; }
 .ours-row th, .best-cell { color: var(--ink); font-weight: 740; }
 .panel-note { max-width: 103ch; margin: 18px 0 0; color: var(--muted); font-size: .88rem; line-height: 1.67; }
 .panel-note strong { color: var(--ink); }
-.paired-results { margin-bottom: 30px; }
+.paired-results { margin-bottom: 0; }
 .paired-results tbody th, .paired-results tbody td { border-bottom: 0; }
 .paired-results tbody tr:last-child th, .paired-results tbody tr:last-child td { border-bottom: 1px solid var(--line); }
 .paired-results .best-cell { color: var(--blue); }
-.carla-video-figure { margin: 0; border: 1px solid var(--line); background: var(--white); }
-.carla-video-figure video { display: block; width: 100%; height: auto; background: #193d50; }
-.carla-video-figure figcaption { padding: 14px 18px 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: .84rem; line-height: 1.55; }
-.carla-video-figure figcaption strong { color: var(--ink); }
 .evidence-more { margin-top: 62px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .evidence-more > summary { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 21px 0; cursor: pointer; list-style: none; }
 .evidence-more > summary::-webkit-details-marker { display: none; }
@@ -274,10 +270,8 @@ footer { background: var(--paper); }
   .detail-block table { min-width: 520px; }
   .table-scroll::before { display: block; padding: 5px 0; color: var(--muted); font-size: .75rem; content: "Swipe table for all metrics →"; }
   .panel-note { font-size: .84rem; }
-  .paired-results { margin-bottom: 25px; }
   .paired-results th:first-child { position: sticky; left: 0; z-index: 1; background: var(--paper); box-shadow: 1px 0 0 var(--line); }
   .paired-results .ours-row th:first-child { background: var(--soft); }
-  .carla-video-figure figcaption { padding: 12px 14px 14px; font-size: .78rem; }
   .evidence-more { margin-top: 50px; }
   .evidence-more > summary small { font-size: .78rem; }
   .detail-heading { display: block; }
@@ -307,7 +301,6 @@ footer { background: var(--paper); }
   .footer-inner { min-height: 80px; flex-direction: column; align-items: start; justify-content: center; gap: 1px; }
 }
 @media (max-width: 480px) {
-  .carla-video-figure video { aspect-ratio: 4 / 9; }
   .scene-teaser-pair { grid-template-columns: 1fr; gap: 17px; }
   .case-worlds:not(.case-worlds-bev) { grid-template-columns: 1fr; gap: 18px; }
   .boundary-steps { grid-template-columns: 1fr; gap: 14px; }
