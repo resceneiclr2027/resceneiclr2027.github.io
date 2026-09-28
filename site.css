@@ -131,10 +131,10 @@ tbody th { color: var(--ink); font-weight: 600; }
 .ours-row th, .best-cell { color: var(--ink); font-weight: 740; }
 .panel-note { max-width: 103ch; margin: 18px 0 0; color: var(--muted); font-size: .88rem; line-height: 1.67; }
 .panel-note strong { color: var(--ink); }
-.tradeoff-figure { margin: 0 0 27px; border: 1px solid var(--line); background: var(--white); }
-.tradeoff-viewport { overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-color: #a6b6c3 var(--soft); scrollbar-width: thin; }
-.tradeoff-figure img { width: 100%; max-width: none; min-width: 720px; }
-.tradeoff-figure figcaption { padding: 11px 17px 14px; border-top: 1px solid var(--line); color: var(--muted); font-size: .84rem; line-height: 1.5; }
+.paired-results { margin-bottom: 30px; }
+.paired-results tbody th, .paired-results tbody td { border-bottom: 0; }
+.paired-results tbody tr:last-child th, .paired-results tbody tr:last-child td { border-bottom: 1px solid var(--line); }
+.paired-results .best-cell { color: var(--blue); }
 .carla-video-figure { margin: 0; border: 1px solid var(--line); background: var(--white); }
 .carla-video-figure video { display: block; width: 100%; height: auto; background: #193d50; }
 .carla-video-figure figcaption { padding: 14px 18px 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: .84rem; line-height: 1.55; }
@@ -274,8 +274,9 @@ footer { background: var(--paper); }
   .detail-block table { min-width: 520px; }
   .table-scroll::before { display: block; padding: 5px 0; color: var(--muted); font-size: .75rem; content: "Swipe table for all metrics →"; }
   .panel-note { font-size: .84rem; }
-  .tradeoff-figure img { min-width: 0; }
-  .tradeoff-figure figcaption { font-size: .78rem; }
+  .paired-results { margin-bottom: 25px; }
+  .paired-results th:first-child { position: sticky; left: 0; z-index: 1; background: var(--paper); box-shadow: 1px 0 0 var(--line); }
+  .paired-results .ours-row th:first-child { background: var(--soft); }
   .carla-video-figure figcaption { padding: 12px 14px 14px; font-size: .78rem; }
   .evidence-more { margin-top: 50px; }
   .evidence-more > summary small { font-size: .78rem; }
