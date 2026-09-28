@@ -11,6 +11,7 @@ if (dialog && typeof dialog.showModal === 'function') {
       expanded.src = link.href;
       expanded.alt = link.dataset.figureAlt || link.querySelector('img')?.alt || '';
       original.href = link.href;
+      dialog.classList.toggle('architecture-open', link.dataset.figureKind === 'architecture');
       dialog.showModal();
       document.body.classList.add('figure-open');
     });
@@ -21,6 +22,7 @@ if (dialog && typeof dialog.showModal === 'function') {
   });
   dialog.addEventListener('close', () => {
     document.body.classList.remove('figure-open');
+    dialog.classList.remove('architecture-open');
     trigger?.focus({ preventScroll: true });
   });
 }
