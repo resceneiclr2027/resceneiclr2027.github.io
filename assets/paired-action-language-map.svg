@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 470" role="img" aria-labelledby="title desc">
+  <title id="title">Paired authored-world action and language trade-off</title>
+  <desc id="desc">Paper Tables 3 and 9: factual replay has 23.68 percent both-action and 4.60 percent both-QA; direct conditioning has 36.15 and 14.56 percent; RESCENE has 42.85 and 6.69 percent. Higher is better on both axes. No method leads both axes.</desc>
+  <rect width="1200" height="470" fill="#ffffff"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#536477" font-size="16">
+    <text x="136" y="39" fill="#24558a" font-size="13" font-weight="700" letter-spacing="1.4">PAPER TABLES 3 + 9 · 1,195 AUTHORED-WORLD PAIRS</text>
+    <g stroke="#e8edf1" stroke-width="1">
+      <path d="M136 70V350 M325 70V350 M514 70V350 M702 70V350 M891 70V350 M1080 70V350"/>
+      <path d="M136 70H1080 M136 140H1080 M136 210H1080 M136 280H1080 M136 350H1080"/>
+    </g>
+    <g stroke="#91a2b1" stroke-width="1.5">
+      <path d="M136 70V350H1080" fill="none"/>
+    </g>
+    <g text-anchor="middle" font-size="14">
+      <text x="136" y="375">0</text><text x="325" y="375">10</text><text x="514" y="375">20</text>
+      <text x="702" y="375">30</text><text x="891" y="375">40</text><text x="1080" y="375">50</text>
+    </g>
+    <g text-anchor="end" font-size="14">
+      <text x="119" y="355">0</text><text x="119" y="285">5</text><text x="119" y="215">10</text>
+      <text x="119" y="145">15</text><text x="119" y="75">20</text>
+    </g>
+    <text x="608" y="421" text-anchor="middle" fill="#1d3044" font-size="18" font-weight="700">Both-world action pass (%) ↑</text>
+    <text x="44" y="210" text-anchor="middle" fill="#1d3044" font-size="18" font-weight="700" transform="rotate(-90 44 210)">Both-world QA correct (%) ↑</text>
+    <g stroke="#ffffff" stroke-width="4">
+      <circle cx="583.1" cy="285.6" r="12" fill="#8997a4"/>
+      <circle cx="818.5" cy="146.2" r="12" fill="#a35c54"/>
+      <circle cx="944.8" cy="256.3" r="12" fill="#24558a"/>
+    </g>
+    <text x="564" y="319" text-anchor="end" fill="#526477" font-size="17" font-weight="700">Factual replay</text>
+    <text x="564" y="341" text-anchor="end" font-size="14">23.68 / 4.60</text>
+    <text x="799" y="112" text-anchor="end" fill="#884b44" font-size="17" font-weight="700">Direct conditioning</text>
+    <text x="799" y="133" text-anchor="end" font-size="14">36.15 / 14.56</text>
+    <text x="965" y="248" fill="#24558a" font-size="18" font-weight="700">RESCENE</text>
+    <text x="965" y="270" font-size="14">42.85 / 6.69</text>
+  </g>
+</svg>
