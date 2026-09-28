@@ -31,20 +31,25 @@ const links = [...document.querySelectorAll('nav a')];
 const carlaVideo = document.querySelector('.carla-video-figure video');
 if (carlaVideo && 'matchMedia' in window) {
   const narrowVideo = window.matchMedia('(max-width: 480px)');
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (reducedMotion.matches) {
     carlaVideo.autoplay = false;
     carlaVideo.pause();
   }
-  const updateVideo = () => {
-    const wasPlaying = !carlaVideo.paused;
+  const updateVideo = (sourceChanged = false) => {
+    const shouldPlay = !reducedMotion.matches && (!sourceChanged || !carlaVideo.paused);
     carlaVideo.poster = narrowVideo.matches
       ? 'assets/carla-authored-pair-mobile-poster.jpg'
       : 'assets/carla-authored-pair-poster.jpg';
-    carlaVideo.load();
-    if (wasPlaying) carlaVideo.play().catch(() => {});
+    if (sourceChanged) carlaVideo.load();
+    if (shouldPlay) {
+      const start = () => carlaVideo.play().catch(() => {});
+      if (carlaVideo.readyState >= 2) start();
+      else carlaVideo.addEventListener('canplay', start, { once: true });
+    }
   };
   updateVideo();
-  narrowVideo.addEventListener?.('change', updateVideo);
+  narrowVideo.addEventListener?.('change', () => updateVideo(true));
 }
 if ('IntersectionObserver' in window) {
   const visible = new Set();
