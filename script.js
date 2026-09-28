@@ -28,6 +28,24 @@ if (dialog && typeof dialog.showModal === 'function') {
 }
 
 const links = [...document.querySelectorAll('nav a')];
+const carlaVideo = document.querySelector('.carla-video-figure video');
+if (carlaVideo && 'matchMedia' in window) {
+  const narrowVideo = window.matchMedia('(max-width: 480px)');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    carlaVideo.autoplay = false;
+    carlaVideo.pause();
+  }
+  const updateVideo = () => {
+    const wasPlaying = !carlaVideo.paused;
+    carlaVideo.poster = narrowVideo.matches
+      ? 'assets/carla-authored-pair-mobile-poster.jpg'
+      : 'assets/carla-authored-pair-poster.jpg';
+    carlaVideo.load();
+    if (wasPlaying) carlaVideo.play().catch(() => {});
+  };
+  updateVideo();
+  narrowVideo.addEventListener?.('change', updateVideo);
+}
 if ('IntersectionObserver' in window) {
   const visible = new Set();
   const observer = new IntersectionObserver(entries => {

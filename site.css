@@ -135,6 +135,10 @@ tbody th { color: var(--ink); font-weight: 600; }
 .tradeoff-viewport { overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-color: #a6b6c3 var(--soft); scrollbar-width: thin; }
 .tradeoff-figure img { width: 100%; max-width: none; min-width: 720px; }
 .tradeoff-figure figcaption { padding: 11px 17px 14px; border-top: 1px solid var(--line); color: var(--muted); font-size: .84rem; line-height: 1.5; }
+.carla-video-figure { margin: 0; border: 1px solid var(--line); background: var(--white); }
+.carla-video-figure video { display: block; width: 100%; height: auto; background: #193d50; }
+.carla-video-figure figcaption { padding: 14px 18px 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: .84rem; line-height: 1.55; }
+.carla-video-figure figcaption strong { color: var(--ink); }
 .evidence-more { margin-top: 62px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .evidence-more > summary { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 21px 0; cursor: pointer; list-style: none; }
 .evidence-more > summary::-webkit-details-marker { display: none; }
@@ -272,6 +276,7 @@ footer { background: var(--paper); }
   .panel-note { font-size: .84rem; }
   .tradeoff-figure img { min-width: 0; }
   .tradeoff-figure figcaption { font-size: .78rem; }
+  .carla-video-figure figcaption { padding: 12px 14px 14px; font-size: .78rem; }
   .evidence-more { margin-top: 50px; }
   .evidence-more > summary small { font-size: .78rem; }
   .detail-heading { display: block; }
@@ -301,6 +306,7 @@ footer { background: var(--paper); }
   .footer-inner { min-height: 80px; flex-direction: column; align-items: start; justify-content: center; gap: 1px; }
 }
 @media (max-width: 480px) {
+  .carla-video-figure video { aspect-ratio: 4 / 9; }
   .scene-teaser-pair { grid-template-columns: 1fr; gap: 17px; }
   .case-worlds:not(.case-worlds-bev) { grid-template-columns: 1fr; gap: 18px; }
   .boundary-steps { grid-template-columns: 1fr; gap: 14px; }
